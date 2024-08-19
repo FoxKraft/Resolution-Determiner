@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolution Determiner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.6.6/css/flag-icon.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .language-select {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .flag-icon {
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-select">
+            <span id="language-selector">
+                <span class="flag-icon flag-icon-us" data-lang="en" onclick="changeLanguage('en')"></span>
+                <span class="flag-icon flag-icon-de" data-lang="de" onclick="changeLanguage('de')"></span>
+                <span class="flag-icon flag-icon-fr" data-lang="fr" onclick="changeLanguage('fr')"></span>
+                <span class="flag-icon flag-icon-it" data-lang="it" onclick="changeLanguage('it')"></span>
+                <span class="flag-icon flag-icon-cn" data-lang="zh" onclick="changeLanguage('zh')"></span>
+            </span>
+        </div>
+        <h1 id="title">Resolution Determiner</h1>
+        <form id="resolution-form">
+            <div class="form-group">
+                <label for="width" id="label-width">Width (pixels):</label>
+                <input type="number" id="width" name="width" required>
+            </div>
+            <div class="form-group">
+                <label for="height" id="label-height">Height (pixels):</label>
+                <input type="number" id="height" name="height" required>
+            </div>
+            <button type="submit" id="determine-button">Determine Resolution</button>
+        </form>
+        <p id="result"></p>
+        <form id="upload-form">
+            <div class="form-group">
+                <label for="imageUpload" id="label-upload">Upload an Image:</label>
+                <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>
+            </div>
+            <button type="submit" id="upload-button">Check Image Resolution</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
